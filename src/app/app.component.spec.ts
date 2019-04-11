@@ -1,10 +1,12 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing'; 
+import { RouterTestingModule } from '@angular/router/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { RouterOutlet } from '@angular/router';
+import { routes } from './app.routes';
 
 describe('AppComponent', () => {
   let component: AppComponent;
@@ -12,6 +14,7 @@ describe('AppComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ RouterTestingModule.withRoutes([]) ],
       declarations: [ AppComponent ]
     })
     .compileComponents();
@@ -20,6 +23,12 @@ describe('AppComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AppComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges(); 
+    fixture.detectChanges();
+  });
+
+  it('should have a router outlet', () => {
+  const de = fixture.debugElement.query(By.directive(RouterOutlet));
+
+  expect(de).not.toBeNull();
   });
 });
