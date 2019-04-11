@@ -5,7 +5,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, RouterLinkWithHref } from '@angular/router';
 import { routes } from './app.routes';
 
 describe('AppComponent', () => {
@@ -30,5 +30,12 @@ describe('AppComponent', () => {
   const de = fixture.debugElement.query(By.directive(RouterOutlet));
 
   expect(de).not.toBeNull();
+  });
+
+  it('should have a link to todos page', () => {
+    const debugElements = fixture.debugElement.queryAll(By.directive(RouterLinkWithHref));
+
+    const index = debugElements.findIndex(de => de.properties.href === '/todos');
+    expect(index).toBeGreaterThan(-1);
   });
 });
