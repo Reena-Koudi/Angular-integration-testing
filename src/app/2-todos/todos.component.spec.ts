@@ -19,11 +19,11 @@ describe('TodosComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ HttpClientModule ],
-      declarations: [ TodosComponent ],
-      providers: [ TodoService ]
+      imports: [HttpClientModule],
+      declarations: [TodosComponent],
+      providers: [TodoService]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -36,9 +36,9 @@ describe('TodosComponent', () => {
   });
 
   // it('should load todos from the server', () => {
-  //  const service = TestBed.get(TodoService);
-  //  spyOn(service, 'getTodos').and.returnValue(from([1]));
-  //  fixture.detectChanges();
-  //  expect(component.todos.length).toBe(3);
+  //   const service = TestBed.get(TodoService);
+  //   spyOn(service, 'getTodos').and.returnValue(from([1, 2, 3]));
+  //   fixture.detectChanges();
+  //   expect(component.todos.length).toBe(3);
   // });
 });
