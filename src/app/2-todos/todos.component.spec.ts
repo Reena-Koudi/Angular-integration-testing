@@ -1,5 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, fakeAsync, tick, ComponentFixture, TestBed } from '@angular/core/testing';
 import { from } from 'rxjs';
 import { TodoService } from './todo.service';
 import { TodosComponent } from './todos.component';
@@ -35,13 +35,12 @@ describe('TodosComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should load todos from the server', async(() => {
+  it('should load todos from the server', fakeAsync(() => {
     const service = TestBed.get(TodoService);
     spyOn(service, 'getTodosPromise').and.returnValue(Promise.resolve([1, 2, 3]));
     fixture.detectChanges();
 
-    fixture.whenStable().then(() => {
-      expect(component.todos.length).toBe(3);
-    });
+    tick();
+    expect(component.todos.length).toBe(3);
   }));
 });
